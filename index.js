@@ -1,6 +1,7 @@
-const server = require('./api/server.js');
+const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
+const knex = require('knex');
 
 const knexConfig = {
   client: 'sqlite3',
