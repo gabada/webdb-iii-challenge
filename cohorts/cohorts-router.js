@@ -30,6 +30,17 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.get('/:id/students', async (req, res) => {
+  try {
+    const students = await db('students')
+      .where({ cohort_id: req.params.id })
+      .first();
+    res.status(200).json(students);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 router.post('/', async (req, res) => {
   try {
     const [id] = await db('cohorts').insert(req.body);
